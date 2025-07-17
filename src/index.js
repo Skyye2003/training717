@@ -52,8 +52,7 @@ io.on("connection", socket => {
   });
 
   socket.on("sendLocation", (coords, callback) => {
-    console.log("add detail info about sendLocation")
-    if(coords.latitude > 2  && coords.latitude < 10 && coords.longitude > 2 && coords.longitude < 10){
+    if(coords.latitude > 1  && coords.latitude < 10 && coords.longitude > 100 && coords.longitude < 150){
         console.log("coords' latitude and coords' s longtitude are between 2 values");
     }
     const user = getUser(socket.id);
