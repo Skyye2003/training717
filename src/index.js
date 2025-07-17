@@ -52,12 +52,14 @@ io.on("connection", socket => {
   });
 
   socket.on("sendLocation", (coords, callback) => {
+    console.log("add detail info about sendLocation")
     const user = getUser(socket.id);
     io.to(user.room).emit("locationMessage", generateLocationMessage(user.username, `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`));
     callback();
   });
 
   socket.on("disconnect", () => {
+    console.log("IDK another detail")
     const user = removeUser(socket.id);
 
     if (user) {
