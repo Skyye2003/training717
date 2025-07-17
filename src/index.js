@@ -51,6 +51,9 @@ io.on("connection", socket => {
   });
 
   socket.on("sendLocation", (coords, callback) => {
+    if(coords.latitude > 1  && coords.latitude < 10 && coords.longitude > 100 && coords.longitude < 150){
+        console.log("coords' latitude and coords' s longtitude are between 2 values");
+    }
     const user = getUser(socket.id);
     io.to(user.room).emit("locationMessage", generateLocationMessage(user.username, `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`));
     callback();
