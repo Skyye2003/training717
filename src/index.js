@@ -44,6 +44,8 @@ io.on("connection", socket => {
 
     if (filter.isProfane(message)) {
       return callback("Profanity is not allowed!");
+    } else if (filter.isDigit(message)) {
+      return callback("Numbers are not allowed!");
     } else {
       io.to(user.room).emit("message", generateMessage(user.username, message));
       callback();
