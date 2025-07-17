@@ -39,9 +39,10 @@ io.on("connection", socket => {
   });
 
   socket.on("sendMessage", (message, callback) => {
+    console.log("sending message: " + message);  
     const user = getUser(socket.id);
     const filter = new Filter();
-
+    filter.addWords('fuck');
     if (filter.isProfane(message)) {
       return callback("Profanity is not allowed!");
     } else {
@@ -60,6 +61,7 @@ io.on("connection", socket => {
   });
 
   socket.on("disconnect", () => {
+    console.log("IDK another detail")
     const user = removeUser(socket.id);
 
     if (user) {
