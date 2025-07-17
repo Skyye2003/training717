@@ -39,6 +39,7 @@ io.on("connection", socket => {
   });
 
   socket.on("sendMessage", (message, callback) => {
+    console.log("sending message: " + message);  
     const user = getUser(socket.id);
     const filter = new Filter();
 
